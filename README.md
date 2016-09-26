@@ -17,13 +17,13 @@ An example Braintree integration for python in the Flask framework.
   python app.py
   ```
 
-1. The client-side code needs to request a client token from the server, make a braintree.setup call to configure Hosted Fields, and finally present a payment form that uses Hosted Fields.  
+- The client-side code needs to request a client token from the server, make a braintree.setup call to configure Hosted Fields, and finally present a payment form that uses Hosted Fields.  
 
-2. Upon submission, the form should submit a payment method nonce to the server.
+- Upon submission, the form should submit a payment method nonce to the server.
  
-3. On the server side, please make two API calls. The first should use this nonce to verify the card and store it in your vault, and the second should create a transaction using this stored payment method.
+- On the server side, please make two API calls. The first should use this nonce to verify the card and store it in your vault, and the second should create a transaction using this stored payment method.
  
-4. The integration should provide feedback indicating whether the the transaction was successful or not.
+- The integration should provide feedback indicating whether the the transaction was successful or not.
 
 
 https://developers.braintreepayments.com/
