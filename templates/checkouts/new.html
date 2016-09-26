@@ -17,29 +17,100 @@
           <div id="bt-dropin"></div>
         </div>
 
-          <label for="amount">
-            <span class="input-label">Amount</span>
-            <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
-            </div>
+	  <label for="card-number">
+		  Card Number
+		  <div class="input-wrapper amount-wrapper">
+		     <div id="card-number" type="text"></div>
+		  </div>
+	  </label>
+
+	  <label for="cvv">
+	    CVV
+	   <div class="input-wrapper amount-wrapper">
+              <div type="text" id="cvv"></div>
+	   </div>
           </label>
+
+	  <label for="expiration-month">
+	   Expiration Month
+	   <div class="input-wrapper amount-wrapper">
+              <div id="expiration-month" type="text"></div>
+           </div>
+	  </label>
+
+	  <label for="expiration-year">
+	   Expiration Year
+	   <div class="input-wrapper amount-wrapper">
+              <div id="expiration-year" type="text"></div>
+           </div>
+	  </label>
+
+	  <label for="postal-code">
+	   Postal Code
+	   <div class="input-wrapper amount-wrapper">
+              <div id="postal-code" type="text"></div>
+           </div>
+	  </label>
+
+
+		<!--
+          <label for="amount">
+	    Amount
+            <div class="input-wrapper amount-wrapper">
+              <input id="amount" name="amount" type="tel" min="1" value="10">
+            </div>
+		-->
+	 </label>
         </section>
 
-      <button class="button" type="submit"><span>Test Transaction</span></button>
+      <input type="submit" value="Submit"/>
     </form>
 
   </div>
 </div>
 
-<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
+<script src="https://js.braintreegateway.com/js/braintree-2.29.0.min.js"></script>
 <script>
-  var checkout = new Demo({
-    formID: 'payment-form'
-  })
-
+  //var checkout = new Demo({
+  //  formID: 'payment-form'
+  //})
+var colorTransition = 'color 100ms ease-out';
   var client_token = '{{ client_token }}';
-  braintree.setup(client_token, "dropin", {
-    container: "bt-dropin"
+  braintree.setup(client_token, "custom", {
+    id: "payment-form",
+    styles: {
+      'input': {
+        'color': '#777',
+        'font-size': '16px',
+        '-webkit-transition': colorTransition,
+        'transition': colorTransition
+      },
+      'input:focus': {
+        'color': '#999'
+      }
+    },
+    hostedFields: {
+	 "number": {
+		"selector": "#card-number",
+        	"placeholder": '4111 1111 1111 1111'
+	 },
+	 "cvv": {
+		"selector": "#cvv",
+		"placeholder": "123"
+	 },
+	 "expirationMonth": {
+		"selector": "#expiration-month",
+		"placeholder": "MM"
+	 },
+	 "expirationYear": {
+		"selector": "#expiration-year",
+	 	"placeholder": "YY"
+	 },
+	 "postalCode": {
+		"selector": "#postal-code",
+		"placeholder": "90210"
+	 }
+     }
   });
 </script>
 {% endblock %}

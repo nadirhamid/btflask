@@ -57,8 +57,9 @@ def show_checkout(transaction_id):
 
 @app.route('/checkouts', methods=['POST'])
 def create_checkout():
+    amount = 10.00
     result = braintree.Transaction.sale({
-        'amount': request.form['amount'],
+        'amount': str(amount),
         'payment_method_nonce': request.form['payment_method_nonce'],
     })
 
