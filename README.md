@@ -1,4 +1,4 @@
-# Braintree Flask Example
+# Braintree Flask
 [![Build Status](https://travis-ci.org/braintree/braintree_flask_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_flask_example)
 
 An example Braintree integration for python in the Flask framework.
